@@ -177,7 +177,7 @@ int main(void)
 	unsigned short acc = 0;
 	unsigned char dummy = 0;
 #endif
-#ifdef RGB_FOR_CAT
+#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
 	unsigned char show_channels_state = 0;
 	unsigned char fixed_data[2];		//la eleccion del usaario en los canales de 0 a 100
 	unsigned char need_to_save = 0;
@@ -583,7 +583,7 @@ int main(void)
 				param_struct.last_channel_in_flash = p_mem_init->last_channel_in_flash;
 #endif
 
-#ifdef RGB_FOR_CAT
+#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
 				param_struct.last_function_in_flash = p_mem_init->last_function_in_flash;
 				param_struct.last_program_in_flash = p_mem_init->last_program_in_flash;
 				param_struct.last_program_deep_in_flash = p_mem_init->last_program_deep_in_flash;
@@ -616,7 +616,7 @@ int main(void)
 					last_program_deep = 1;
 					last_channel = 1;
 
-#ifdef RGB_FOR_CAT
+#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
 					fixed_data[0] = 0;
 					fixed_data[1] = 0;
 #endif
@@ -631,7 +631,7 @@ int main(void)
 					last_program_deep = param_struct.last_program_deep_in_flash;
 #endif
 
-#ifdef RGB_FOR_CAT
+#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
 					last_function = param_struct.last_function_in_flash;
 					last_program = param_struct.last_program_in_flash;
 					last_channel = param_struct.last_channel_in_flash;
@@ -660,7 +660,7 @@ int main(void)
 					ds3_number = last_program_deep;
 					main_state = MAIN_MAN_PX_NORMAL;
 #endif
-#ifdef RGB_FOR_CAT
+#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
 					ds1_number = DISPLAY_C;
 					ds2_number = DISPLAY_H;
 					ds3_number = last_program;
@@ -795,7 +795,7 @@ int main(void)
 				WriteConfigurations ();
 #endif
 
-#ifdef RGB_FOR_CAT
+#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
 				//hago update de memoria y grabo
 				param_struct.last_channel_in_flash = last_channel;
 				param_struct.last_function_in_flash = FUNCTION_DMX;
@@ -912,7 +912,7 @@ int main(void)
 
 				main_state++;
 #endif
-#ifdef RGB_FOR_CAT
+#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
 				//vengo de la otra funcion, reviso cual fue el ultimo canal usado
 				DMX_Disa();
 				LED_OFF;
@@ -952,7 +952,7 @@ int main(void)
 				Func_PX_Ds(ds1_number, ds2_number, ds3_number);
 #endif
 
-#ifdef RGB_FOR_CAT
+#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
 				if (CheckS1() > S_NO)
 					main_state = MAIN_MAN_PX_CHECK_S1;
 
@@ -1016,7 +1016,7 @@ int main(void)
 
 				timer_standby = TIMER_STANDBY_TIMEOUT;
 #endif
-#ifdef RGB_FOR_CAT
+#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
 				//espero que se libere el switch  o poner S_HALF y luego forzar 0
 				if (CheckS1() == S_NO)
 				{
@@ -1077,7 +1077,7 @@ int main(void)
 				}
 				timer_standby = TIMER_STANDBY_TIMEOUT;
 #endif
-#ifdef RGB_FOR_CAT
+#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
 				switch (last_program)
 				{
 					case 1:
@@ -1130,7 +1130,7 @@ int main(void)
 				WriteConfigurations ();
 #endif
 
-#ifdef RGB_FOR_CAT
+#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
 				param_struct.last_channel_in_flash = last_channel;
 				param_struct.last_function_in_flash = FUNCTION_CAT;
 				param_struct.last_program_in_flash = last_program;
@@ -1154,7 +1154,7 @@ int main(void)
 					timer_standby = TIMER_STANDBY_TIMEOUT;
 				}
 #endif
-#ifdef RGB_FOR_CAT
+#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
 				Func_For_Cat(fixed_data[0], fixed_data[1]);
 
 				if ((CheckS1() > S_NO) || (CheckS2() > S_NO))
@@ -1246,7 +1246,7 @@ int main(void)
 					}
 					else
 					{
-#ifdef RGB_FOR_CAT
+#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
 						ds1_number = DISPLAY_C;
 						ds2_number = DISPLAY_H;
 						ds3_number = last_program;

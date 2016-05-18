@@ -25,7 +25,7 @@ unsigned char cycles_strobe = 0;
 unsigned char last_ds2 = 0;
 unsigned char last_ds3 = 0;
 
-#ifdef RGB_FOR_CAT
+#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
 unsigned char last_r = 0;
 unsigned char last_g = 0;
 unsigned char last_b = 0;
@@ -62,7 +62,7 @@ const unsigned char v_cycles_strobe[] = {  9,  9,   8,   8,   7,   7,   6,   6, 
 #endif
 /* Functions -------------------------------------------------------------------*/
 
-#ifdef RGB_FOR_CAT
+#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
 void Func_For_Cat(unsigned char r, unsigned char g)
 {
 	unsigned short acc;

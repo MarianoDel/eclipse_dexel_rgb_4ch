@@ -105,7 +105,13 @@ void TIM_3_Init (void)
 	TIM3->CR2 = 0x00;		//igual al reset
 	TIM3->CCMR1 = 0x7070;			//CH2 y CH1 output PWM mode 2
 	TIM3->CCMR2 = 0x7070;			//CH4 y CH3 output PWM mode 2
+#ifdef RGB_FOR_CAT
 	TIM3->CCER |= TIM_CCER_CC4E | TIM_CCER_CC4P | TIM_CCER_CC3E | TIM_CCER_CC3P | TIM_CCER_CC2E | TIM_CCER_CC2P | TIM_CCER_CC1E | TIM_CCER_CC1P;	//CH4 CH3 CH2 y CH1 enable on pin
+#endif
+#ifdef RGB_FOR_LM317
+	TIM3->CCER |= TIM_CCER_CC4E | TIM_CCER_CC3E | TIM_CCER_CC2E |TIM_CCER_CC1E;	//CH4 CH3 CH2 y CH1 enable on pin
+#endif
+
 	TIM3->ARR = 255;
 	//TIM3->ARR = 1023;		//para prbar parte baja de placa mosfet (comparar con placa china)
 	TIM3->CNT = 0;

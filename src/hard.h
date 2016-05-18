@@ -17,10 +17,11 @@
 //#define WHITE_AS_WHITE	//el blanco tiene leds blancos individuales
 
 //#define WITH_GRANDMASTER	//tiene un quinto canal que funciona como grandmaster de los 4 primeros
-#define RGB_FOR_CAT
+//#define RGB_FOR_CAT
 //#define RGB_FOR_PROGRAMS
+#define RGB_FOR_LM317
 
-#ifdef RGB_FOR_CAT
+#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
 #define RGB_FOR_CAT_CHANNELS	2
 //#define RGB_FOR_CAT_CHANNELS	4
 #endif
