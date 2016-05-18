@@ -144,7 +144,15 @@
 #define DISPLAY_E		15
 #define DISPLAY_C		16
 #define DISPLAY_H		17
+#define DISPLAY_1P		18
+#define DISPLAY_S		19
+#define DISPLAY_A		20
+#define DISPLAY_T		21
+#define DISPLAY_R		22
+#define DISPLAY_G		23
 #define DISPLAY_NONE	0xF0
+
+#define DISPLAY_P	DISPLAY_PROG
 
 #define DISPLAY_DS3		0x04
 #define DISPLAY_DS2		0x02

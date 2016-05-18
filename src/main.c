@@ -548,6 +548,48 @@ int main(void)
 	Wait_ms(300);
 	LED_OFF;
 
+	//muestro hardare y software
+	timer_standby = 1000;
+	ds1_number = DISPLAY_H;				//Hardware
+	ds2_number = DISPLAY_1P;			//1.
+	ds3_number = 1;						//1
+	while (timer_standby)
+		UpdateDisplay();
+
+	timer_standby = 1000;
+	ds1_number = DISPLAY_S;				//Software
+	ds2_number = DISPLAY_1P;			//1.
+	ds3_number = 3;						//3
+	while (timer_standby)
+		UpdateDisplay();
+
+#ifdef RGB_FOR_LM317
+	timer_standby = 1000;
+	ds1_number = 3;						//LM317
+	ds2_number = 1;						//
+	ds3_number = 7;						//
+	while (timer_standby)
+		UpdateDisplay();
+#endif
+
+#ifdef RGB_FOR_CAT
+	timer_standby = 1000;
+	ds1_number = DISPLAY_C;				//CAT
+	ds2_number = DISPLAY_A;				//
+	ds3_number = DISPLAY_T;				//
+	while (timer_standby)
+		UpdateDisplay();
+#endif
+
+#ifdef RGB_FOR_PROGRAMS
+	timer_standby = 1000;
+	ds1_number = DISPLAY_P;				//PRG
+	ds2_number = DISPLAY_R;				//
+	ds3_number = DISPLAY_G;				//
+	while (timer_standby)
+		UpdateDisplay();
+#endif
+
 	//--- Main loop ---//
 	while(1)
 	{
@@ -1467,6 +1509,9 @@ unsigned short FromDsToChannel (void)	//en DS 10 es cero; OJO CON 11 es punto; 0
 	return ch;
 }
 
+//DS1 centena
+//DS2 decena
+//DS3 unidades
 void ShowNumbers (unsigned short number)	//del 1 al 9; 10 es cero; 11 es punto; 0, 12, 13, 14, 15 apagar
 {
 	unsigned char a, b;
@@ -1525,6 +1570,30 @@ unsigned char TranslateNumber (unsigned char number)	//del 1 al 9; 10 es cero; 1
 
 		case DISPLAY_H:
 			number = 0x74;
+			break;
+
+		case DISPLAY_1P:
+			number = 0x86;
+			break;
+
+		case DISPLAY_S:
+			number = 0x6D;
+			break;
+
+		case DISPLAY_A:
+			number = 0x5F;
+			break;
+
+		case DISPLAY_T:
+			number = 0x78;
+			break;
+
+		case DISPLAY_R:
+			number = 0x50;
+			break;
+
+		case DISPLAY_G:
+			number = 0x6F;
 			break;
 
 		case 1:
