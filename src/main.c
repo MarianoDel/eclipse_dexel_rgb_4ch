@@ -559,7 +559,7 @@ int main(void)
 	timer_standby = 1000;
 	ds1_number = DISPLAY_S;				//Software
 	ds2_number = DISPLAY_1P;			//1.
-	ds3_number = 3;						//3
+	ds3_number = 4;						//4
 	while (timer_standby)
 		UpdateDisplay();
 
