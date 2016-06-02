@@ -19,8 +19,8 @@
 //#define WITH_GRANDMASTER	//tiene un quinto canal que funciona como grandmaster de los 4 primeros
 //#define RGB_FOR_CAT
 //#define RGB_FOR_PROGRAMS
-//#define RGB_FOR_LM317			//utiliza los LM317 externos y usa los mosfet en la placa
-#define RGB_FOR_MOSFET_KIRNO	//utiliza la placa mosfet CH de kirno por afuera y se deben quitar los mosfet de la placa
+#define RGB_FOR_LM317			//utiliza los LM317 externos y usa los mosfet en la placa
+//#define RGB_FOR_MOSFET_KIRNO	//utiliza la placa mosfet CH de kirno por afuera y se deben quitar los mosfet de la placa
 
 #ifdef RGB_FOR_MOSFET_KIRNO
 #define RGB_FOR_CAT

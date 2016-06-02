@@ -1424,6 +1424,8 @@ unsigned char Door_Open (void)
 
 void SendSegment (unsigned char display, unsigned char segment)
 {
+	unsigned char dbkp = 0;
+
 	OE_OFF;
 
 #ifdef VER_1_1
@@ -1432,12 +1434,7 @@ void SendSegment (unsigned char display, unsigned char segment)
 	PWR_DS2_OFF;
 	PWR_DS3_OFF;
 
-	if (display == DISPLAY_DS1)
-		PWR_DS1_ON;
-	else if (display == DISPLAY_DS2)
-		PWR_DS2_ON;
-	else if (display == DISPLAY_DS3)
-		PWR_DS3_ON;
+	dbkp = display;
 
     if (segment & 0x80)
     	display |= 1;
@@ -1447,6 +1444,14 @@ void SendSegment (unsigned char display, unsigned char segment)
     Send_SPI_Single (display);
     segment <<= 1;
     Send_SPI_Single (segment);
+
+	if (dbkp == DISPLAY_DS1)
+		PWR_DS1_ON;
+	else if (dbkp == DISPLAY_DS2)
+		PWR_DS2_ON;
+	else if (dbkp == DISPLAY_DS3)
+		PWR_DS3_ON;
+
 #endif
 
 #ifdef VER_1_0
