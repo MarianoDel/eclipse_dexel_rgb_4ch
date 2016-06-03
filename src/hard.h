@@ -29,6 +29,8 @@
 #if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
 #define RGB_FOR_CAT_CHANNELS	2
 //#define RGB_FOR_CAT_CHANNELS	4
+#define RGB_FOR_CAT_CH1_CH3_SYNC
+//#define RGB_FOR_CAT_CH2_CH4_SYNC
 #endif
 
 //-------- End Of Defines For Configuration ------

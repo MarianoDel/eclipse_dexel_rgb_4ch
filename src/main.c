@@ -559,7 +559,7 @@ int main(void)
 	timer_standby = 1000;
 	ds1_number = DISPLAY_S;				//Software
 	ds2_number = DISPLAY_1P;			//1.
-	ds3_number = 4;						//4
+	ds3_number = 5;						//5
 	while (timer_standby)
 		UpdateDisplay();
 
@@ -1293,6 +1293,7 @@ int main(void)
 						ds1_number = DISPLAY_C;
 						ds2_number = DISPLAY_H;
 						ds3_number = last_program;
+						ResetLastValues();
 #else
 						ds1_number = DISPLAY_PROG;
 						ds2_number = last_program;

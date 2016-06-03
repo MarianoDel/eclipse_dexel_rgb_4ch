@@ -71,7 +71,12 @@ void Func_For_Cat(unsigned char r, unsigned char g)
 	{
 		acc = r * 255;
 		acc = acc / 100;
+#ifdef RGB_FOR_CAT_CH1_CH3_SYNC
 		RED_PWM(acc);
+		BLUE_PWM(acc);
+#else
+		RED_PWM(acc);
+#endif
 		last_r = r;
 	}
 
@@ -79,9 +84,24 @@ void Func_For_Cat(unsigned char r, unsigned char g)
 	{
 		acc = g * 255;
 		acc = acc / 100;
+#ifdef RGB_FOR_CAT_CH2_CH4_SYNC
 		GREEN_PWM(acc);
+		WHITE_PWM(acc);
+#else
+		GREEN_PWM(acc);
+#endif
+
+
 		last_g = g;
 	}
+}
+
+void ResetLastValues(void)
+{
+	last_r = 0;
+	last_g = 0;
+	last_b = 0;
+	last_w = 0;
 }
 
 /*

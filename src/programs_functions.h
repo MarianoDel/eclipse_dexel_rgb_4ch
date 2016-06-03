@@ -76,6 +76,7 @@ void Func_P7(unsigned char);
 void Func_P8(unsigned char);
 void Func_P9(unsigned char);
 void Func_For_Cat(unsigned char, unsigned char);
+void ResetLastValues(void);
 //void Func_For_Cat(unsigned char, unsigned char, unsigned char, unsigned char);
 
 #endif /* PROGRAMS_FUNCTIONS_H_ */
