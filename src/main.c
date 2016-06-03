@@ -683,6 +683,7 @@ int main(void)
 					fixed_data[1] = param_struct.pwm_channel_2;
 #endif
 
+
 				}
 
 				if (last_function == FUNCTION_DMX)
