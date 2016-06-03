@@ -674,27 +674,29 @@ int main(void)
 #endif
 
 #if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
-					last_function = param_struct.last_function_in_flash;
-					last_program = param_struct.last_program_in_flash;
-					last_channel = param_struct.last_channel_in_flash;
-					last_program_deep = param_struct.last_program_deep_in_flash;
-
-					fixed_data[0] = param_struct.pwm_channel_1;
-					fixed_data[1] = param_struct.pwm_channel_2;
+//					last_function = param_struct.last_function_in_flash;
+//					last_program = param_struct.last_program_in_flash;
+//					last_channel = param_struct.last_channel_in_flash;
+//					last_program_deep = param_struct.last_program_deep_in_flash;
+//
+//					fixed_data[0] = param_struct.pwm_channel_1;
+//					fixed_data[1] = param_struct.pwm_channel_2;
+					last_program = 1;
+					fixed_data[0] = 93;
 #endif
 
 				}
 
-				if (last_function == FUNCTION_DMX)
-				{
-					FromChannelToDs(last_channel);		//muestro el ultimo canal DMX seleccionado
-					DMX_channel_selected = last_channel;
-					//DMX_Ena();
-					main_state = MAIN_DMX_NORMAL;
-					timer_dmx_display_show = DMX_DISPLAY_SHOW_TIMEOUT;
-				}
-				else
-				{
+//				if (last_function == FUNCTION_DMX)
+//				{
+//					FromChannelToDs(last_channel);		//muestro el ultimo canal DMX seleccionado
+//					DMX_channel_selected = last_channel;
+//					//DMX_Ena();
+//					main_state = MAIN_DMX_NORMAL;
+//					timer_dmx_display_show = DMX_DISPLAY_SHOW_TIMEOUT;
+//				}
+//				else
+//				{
 					DMX_Disa();
 #ifdef RGB_FOR_PROGRAMS
 					ds1_number = DISPLAY_PROG;
@@ -708,7 +710,7 @@ int main(void)
 					ds3_number = last_program;
 					main_state = MAIN_MAN_PX_NORMAL;
 #endif
-				}
+//				}
 				break;
 
 			case MAIN_DMX_CHECK_CHANNEL:
@@ -995,14 +997,14 @@ int main(void)
 #endif
 
 #if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
-				if (CheckS1() > S_NO)
-					main_state = MAIN_MAN_PX_CHECK_S1;
+//				if (CheckS1() > S_NO)
+//					main_state = MAIN_MAN_PX_CHECK_S1;
 
-				if (CheckS2() > S_NO)
-				{
-					main_state = MAIN_MAN_PX_CHECK_S2;
-					need_to_save = 1;
-				}
+//				if (CheckS2() > S_NO)
+//				{
+//					main_state = MAIN_MAN_PX_CHECK_S2;
+//					need_to_save = 1;
+//				}
 
 				//salgo de dos maneras
 				//grabando o no grabando
@@ -1122,19 +1124,19 @@ int main(void)
 #if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
 				switch (last_program)
 				{
-					case 1:
-						//necesito un short para la cuenta
-						if (!timer_for_cat_switch)
-						{
-							if (fixed_data[0] < 100)
-								fixed_data[0]++;
-							else
-								fixed_data[0] = 0;
-
-							FromChannelToDs(fixed_data[0]);
-							timer_for_cat_switch = TIMER_FOR_CAT_SW;
-						}
-						break;
+//					case 1:
+//						//necesito un short para la cuenta
+//						if (!timer_for_cat_switch)
+//						{
+//							if (fixed_data[0] < 100)
+//								fixed_data[0]++;
+//							else
+//								fixed_data[0] = 0;
+//
+//							FromChannelToDs(fixed_data[0]);
+//							timer_for_cat_switch = TIMER_FOR_CAT_SW;
+//						}
+//						break;
 
 					case 2:
 						//necesito un short para la cuenta
