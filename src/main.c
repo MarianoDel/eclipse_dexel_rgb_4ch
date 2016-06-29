@@ -177,9 +177,9 @@ int main(void)
 	unsigned short acc = 0;
 	unsigned char dummy = 0;
 #endif
-#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
+#ifdef RGB_FOR_CHANNELS
 	unsigned char show_channels_state = 0;
-	unsigned char fixed_data[2];		//la eleccion del usaario en los canales de 0 a 100
+	unsigned char fixed_data[2];		//la eleccion del usuario en los canales de 0 a 100
 	unsigned char need_to_save = 0;
 #endif
 	parameters_typedef * p_mem_init;
@@ -548,35 +548,40 @@ int main(void)
 	Wait_ms(300);
 	LED_OFF;
 
-	//muestro hardare y software
+//muestro versiones de hardware, software y firmware
+//-- HARDWARE --
+#ifdef VER_1_1
 	timer_standby = 1000;
 	ds1_number = DISPLAY_H;				//Hardware
 	ds2_number = DISPLAY_1P;			//1.
 	ds3_number = 1;						//1
 	while (timer_standby)
 		UpdateDisplay();
+#endif
 
+#ifdef VER_1_0
 	timer_standby = 1000;
-	ds1_number = DISPLAY_S;				//Software
+	ds1_number = DISPLAY_H;				//Hardware
 	ds2_number = DISPLAY_1P;			//1.
-	ds3_number = 5;						//5
-	while (timer_standby)
-		UpdateDisplay();
-
-#ifdef RGB_FOR_LM317
-	timer_standby = 1000;
-	ds1_number = 3;						//LM317
-	ds2_number = 1;						//
-	ds3_number = 7;						//
+	ds3_number = DISPLAY_ZERO;			//0
 	while (timer_standby)
 		UpdateDisplay();
 #endif
 
-#ifdef RGB_FOR_CAT
+//-- SOFTWARE --
 	timer_standby = 1000;
-	ds1_number = DISPLAY_C;				//CAT
-	ds2_number = DISPLAY_A;				//
-	ds3_number = DISPLAY_T;				//
+	ds1_number = DISPLAY_S;				//Software
+	ds2_number = DISPLAY_1P;			//1.
+	ds3_number = 6;						//6
+	while (timer_standby)
+		UpdateDisplay();
+
+//-- FIRMWARE --
+#ifdef RGB_FOR_CHANNELS
+	timer_standby = 1000;
+	ds1_number = DISPLAY_C;				//Channels
+	ds2_number = DISPLAY_H;				//
+	ds3_number = DISPLAY_N;				//
 	while (timer_standby)
 		UpdateDisplay();
 #endif
@@ -586,6 +591,25 @@ int main(void)
 	ds1_number = DISPLAY_P;				//PRG
 	ds2_number = DISPLAY_R;				//
 	ds3_number = DISPLAY_G;				//
+	while (timer_standby)
+		UpdateDisplay();
+#endif
+
+//-- OUTPUTS --
+#ifdef RGB_FOR_LM317
+	timer_standby = 1000;
+	ds1_number = 3;						//LM317
+	ds2_number = 1;						//
+	ds3_number = 7;						//
+	while (timer_standby)
+		UpdateDisplay();
+#endif
+
+#if ((defined RGB_OUTPUT_MOSFET_KIRNO) || (defined RGB_OUTPUT_CAT))
+	timer_standby = 1000;
+	ds1_number = DISPLAY_C;				//CAT o MOSFET KIRNO
+	ds2_number = DISPLAY_A;				//
+	ds3_number = DISPLAY_T;				//
 	while (timer_standby)
 		UpdateDisplay();
 #endif
@@ -625,7 +649,7 @@ int main(void)
 				param_struct.last_channel_in_flash = p_mem_init->last_channel_in_flash;
 #endif
 
-#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
+#ifdef RGB_FOR_CHANNELS
 				param_struct.last_function_in_flash = p_mem_init->last_function_in_flash;
 				param_struct.last_program_in_flash = p_mem_init->last_program_in_flash;
 				param_struct.last_program_deep_in_flash = p_mem_init->last_program_deep_in_flash;
@@ -639,7 +663,6 @@ int main(void)
 				if (param_struct.pwm_channel_2 > 100)
 					param_struct.pwm_channel_2 = 100;
 
-				//TODO: integrar a canales
 				param_struct.pwm_channel_3 = p_mem_init->pwm_channel_3;
 				if (param_struct.pwm_channel_3 > 100)
 					param_struct.pwm_channel_3 = 100;
@@ -658,7 +681,7 @@ int main(void)
 					last_program_deep = 1;
 					last_channel = 1;
 
-#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
+#ifdef RGB_FOR_CHANNELS
 					fixed_data[0] = 0;
 					fixed_data[1] = 0;
 #endif
@@ -673,7 +696,7 @@ int main(void)
 					last_program_deep = param_struct.last_program_deep_in_flash;
 #endif
 
-#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
+#ifdef RGB_FOR_CHANNELS
 					last_function = param_struct.last_function_in_flash;
 					last_program = param_struct.last_program_in_flash;
 					last_channel = param_struct.last_channel_in_flash;
@@ -703,7 +726,7 @@ int main(void)
 					ds3_number = last_program_deep;
 					main_state = MAIN_MAN_PX_NORMAL;
 #endif
-#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
+#ifdef RGB_FOR_CHANNELS
 					ds1_number = DISPLAY_C;
 					ds2_number = DISPLAY_H;
 					ds3_number = last_program;
@@ -838,7 +861,7 @@ int main(void)
 				WriteConfigurations ();
 #endif
 
-#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
+#ifdef RGB_FOR_CHANNELS
 				//hago update de memoria y grabo
 				param_struct.last_channel_in_flash = last_channel;
 				param_struct.last_function_in_flash = FUNCTION_DMX;
@@ -955,7 +978,7 @@ int main(void)
 
 				main_state++;
 #endif
-#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
+#ifdef RGB_FOR_CHANNELS
 				//vengo de la otra funcion, reviso cual fue el ultimo canal usado
 				DMX_Disa();
 				LED_OFF;
@@ -995,7 +1018,7 @@ int main(void)
 				Func_PX_Ds(ds1_number, ds2_number, ds3_number);
 #endif
 
-#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
+#ifdef RGB_FOR_CHANNELS
 				if (CheckS1() > S_NO)
 					main_state = MAIN_MAN_PX_CHECK_S1;
 
@@ -1059,12 +1082,12 @@ int main(void)
 
 				timer_standby = TIMER_STANDBY_TIMEOUT;
 #endif
-#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
+#ifdef RGB_FOR_CHANNELS
 				//espero que se libere el switch  o poner S_HALF y luego forzar 0
 				if (CheckS1() == S_NO)
 				{
 					//TODO: integrar a canales
-					if (last_program < RGB_FOR_CAT_CHANNELS)
+					if (last_program < RGB_FOR_CHANNELS_NUM)
 						last_program++;
 					else
 						last_program = 1;
@@ -1120,7 +1143,7 @@ int main(void)
 				}
 				timer_standby = TIMER_STANDBY_TIMEOUT;
 #endif
-#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
+#ifdef RGB_FOR_CHANNELS
 				switch (last_program)
 				{
 					case 1:
@@ -1173,7 +1196,7 @@ int main(void)
 				WriteConfigurations ();
 #endif
 
-#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
+#ifdef RGB_FOR_CHANNELS
 				param_struct.last_channel_in_flash = last_channel;
 				param_struct.last_function_in_flash = FUNCTION_CAT;
 				param_struct.last_program_in_flash = last_program;
@@ -1197,7 +1220,7 @@ int main(void)
 					timer_standby = TIMER_STANDBY_TIMEOUT;
 				}
 #endif
-#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
+#ifdef RGB_FOR_CHANNELS
 				Func_For_Cat(fixed_data[0], fixed_data[1]);
 
 				if ((CheckS1() > S_NO) || (CheckS2() > S_NO))
@@ -1289,7 +1312,7 @@ int main(void)
 					}
 					else
 					{
-#if ((defined (RGB_FOR_CAT)) || (defined (RGB_FOR_LM317)))
+#ifdef RGB_FOR_CHANNELS
 						ds1_number = DISPLAY_C;
 						ds2_number = DISPLAY_H;
 						ds3_number = last_program;
@@ -1601,6 +1624,10 @@ unsigned char TranslateNumber (unsigned char number)	//del 1 al 9; 10 es cero; 1
 
 		case DISPLAY_G:
 			number = 0x6F;
+			break;
+
+		case DISPLAY_N:
+			number = 0x52;
 			break;
 
 		case 1:
