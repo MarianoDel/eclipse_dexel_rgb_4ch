@@ -18,15 +18,15 @@
 //---- Configuration for Firmware ----------------
 //#define WITH_GRANDMASTER	//tiene un quinto canal que funciona como grandmaster de los 4 primeros
 
-//#define RGB_FOR_CHANNELS
-#define RGB_FOR_PROGRAMS
+#define RGB_FOR_CHANNELS
+//#define RGB_FOR_PROGRAMS
 
 //------ Configuration for Firmware-Channels -----
 #ifdef RGB_FOR_CHANNELS
 #define RGB_FOR_CHANNELS_NUM	2
 //#define RGB_FOR_CHANNELS_NUM	4
 #if (RGB_FOR_CHANNELS_NUM == 2)
-#define RGB_FOR_CHANNELS_CH1_CH3_SYNC
+//#define RGB_FOR_CHANNELS_CH1_CH3_SYNC
 //#define RGB_FOR_CHANNELS_CH2_CH4_SYNC
 #endif
 //-------- Configuration for Outputs-Channels -----
@@ -41,8 +41,8 @@
 //#define WHITE_AS_WHITE	//el blanco tiene leds blancos individuales
 
 //-------- Configuration for Outputs-Firmware ------
-//#define RGB_OUTPUT_LM317
-#define RGB_OUTPUT_MOSFET_KIRNO
+#define RGB_OUTPUT_LM317
+//#define RGB_OUTPUT_MOSFET_KIRNO
 //#define RGB_OUTPUT_CAT
 #endif
 

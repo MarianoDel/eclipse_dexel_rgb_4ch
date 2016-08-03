@@ -1627,7 +1627,7 @@ unsigned char TranslateNumber (unsigned char number)	//del 1 al 9; 10 es cero; 1
 			break;
 
 		case DISPLAY_N:
-			number = 0x52;
+			number = 0x54;
 			break;
 
 		case 1:
