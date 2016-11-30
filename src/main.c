@@ -596,7 +596,7 @@ int main(void)
 #endif
 
 //-- OUTPUTS --
-#ifdef RGB_FOR_LM317
+#ifdef RGB_OUTPUT_LM317
 	timer_standby = 1000;
 	ds1_number = 3;						//LM317
 	ds2_number = 1;						//

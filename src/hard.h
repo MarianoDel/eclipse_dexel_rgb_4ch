@@ -18,8 +18,8 @@
 //---- Configuration for Firmware ----------------
 //#define WITH_GRANDMASTER	//tiene un quinto canal que funciona como grandmaster de los 4 primeros
 
-#define RGB_FOR_CHANNELS
-//#define RGB_FOR_PROGRAMS
+//#define RGB_FOR_CHANNELS
+#define RGB_FOR_PROGRAMS
 
 //------ Configuration for Firmware-Channels -----
 #ifdef RGB_FOR_CHANNELS
