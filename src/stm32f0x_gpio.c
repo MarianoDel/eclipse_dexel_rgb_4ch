@@ -98,7 +98,7 @@ void GPIO_Config (void)
 	GPIOA->PUPDR = temp;
 #endif
 
-#ifdef VER_1_1
+#if ((defined VER_1_1) || (defined VER_1_2))
 	temp = GPIOA->MODER;	//2 bits por pin
 	temp &= 0xFC3C0000;		//PA0 (analog input); PA1 salida; PA2 PA3 input; PA4 PA5 out; PA6 PA7 (alternative); PA11 PA12 out
 	temp |= 0x0140A507;

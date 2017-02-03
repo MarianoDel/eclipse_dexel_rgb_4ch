@@ -550,6 +550,15 @@ int main(void)
 
 //muestro versiones de hardware, software y firmware
 //-- HARDWARE --
+#ifdef VER_1_2
+	timer_standby = 1000;
+	ds1_number = DISPLAY_H;				//Hardware
+	ds2_number = DISPLAY_1P;			//1.
+	ds3_number = 2;						//2
+	while (timer_standby)
+		UpdateDisplay();
+#endif
+
 #ifdef VER_1_1
 	timer_standby = 1000;
 	ds1_number = DISPLAY_H;				//Hardware
@@ -1453,7 +1462,7 @@ void SendSegment (unsigned char display, unsigned char segment)
 
 	OE_OFF;
 
-#ifdef VER_1_1
+#if ((defined VER_1_1) || (defined VER_1_2))
 	//PRUEBO desplazando 1 a la izq
 	PWR_DS1_OFF;
 	PWR_DS2_OFF;
@@ -1561,7 +1570,7 @@ void ShowNumbers (unsigned short number)	//del 1 al 9; 10 es cero; 11 es punto; 
 		ds3_number = 10;
 }
 
-#ifdef VER_1_1
+#if ((defined VER_1_1) || (defined VER_1_2))
 //		dp g f e d c b a
 //bits   7 6 5 4 3 2 1 0
 //sin negar
