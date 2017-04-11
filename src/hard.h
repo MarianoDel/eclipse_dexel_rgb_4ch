@@ -11,16 +11,15 @@
 
 //-- Defines For Configuration -------------------
 //---- Configuration for Hardware Versions -------
-//#define VER_1_0
-//#define VER_1_1
 #define VER_1_2
-
+//#define VER_1_1
+//#define VER_1_0
 
 //---- Configuration for Firmware ----------------
 //#define WITH_GRANDMASTER	//tiene un quinto canal que funciona como grandmaster de los 4 primeros
 
-#define RGB_FOR_CHANNELS
-//#define RGB_FOR_PROGRAMS
+//#define RGB_FOR_CHANNELS
+#define RGB_FOR_PROGRAMS
 
 //------ Configuration for Firmware-Channels -----
 #ifdef RGB_FOR_CHANNELS
@@ -42,9 +41,9 @@
 //#define WHITE_AS_WHITE	//el blanco tiene leds blancos individuales
 
 //-------- Configuration for Outputs-Firmware ------
-//#define RGB_OUTPUT_LM317
+#define RGB_OUTPUT_LM317
 //#define RGB_OUTPUT_MOSFET_KIRNO
-#define RGB_OUTPUT_CAT
+//#define RGB_OUTPUT_CAT
 #endif
 
 //-- End Of Defines For Configuration ---------------
