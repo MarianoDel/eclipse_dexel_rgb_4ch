@@ -1729,6 +1729,35 @@ unsigned char TranslateNumber (unsigned char number)	//del 1 al 9; 10 es cero; 1
 			number = 0x8B;
 			break;
 
+		case DISPLAY_1P:
+			number = 0x79;
+			break;
+
+		case DISPLAY_S:
+			number = 0x92;
+			break;
+
+		case DISPLAY_A:
+			number = 0xA0;
+			break;
+
+		case DISPLAY_T:
+			number = 0x87;
+			break;
+
+		case DISPLAY_R:
+			number = 0xAF;
+			break;
+
+		case DISPLAY_G:
+			number = 0x90;
+			break;
+
+		case DISPLAY_N:
+			number = 0xAB;
+			break;
+
+
 		case 1:
 			//number = 0x06;
 			number = 0xF9;

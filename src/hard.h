@@ -11,21 +11,21 @@
 
 //-- Defines For Configuration -------------------
 //---- Configuration for Hardware Versions -------
-#define VER_1_2
-//#define VER_1_1
+//#define VER_1_2
+#define VER_1_1
 //#define VER_1_0
 
 //---- Configuration for Firmware ----------------
 //#define WITH_GRANDMASTER	//tiene un quinto canal que funciona como grandmaster de los 4 primeros
 
-//#define RGB_FOR_CHANNELS
-#define RGB_FOR_PROGRAMS
+#define RGB_FOR_CHANNELS
+//#define RGB_FOR_PROGRAMS
 
 //------ Configuration for Firmware-Channels -----
 #ifdef RGB_FOR_CHANNELS
 #define RGB_FOR_CHANNELS_NUM	2
 //#define RGB_FOR_CHANNELS_NUM	4
-#if (RGB_FOR_CHANNELS_NUM == 2)
+#if (RGB_FOR_CHANNELS_NUM == 2)		//SYNCHRO
 //#define RGB_FOR_CHANNELS_CH1_CH3_SYNC
 //#define RGB_FOR_CHANNELS_CH2_CH4_SYNC
 #endif
