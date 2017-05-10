@@ -41,9 +41,9 @@
 //#define WHITE_AS_WHITE	//el blanco tiene leds blancos individuales
 
 //-------- Configuration for Outputs-Firmware ------
-#define RGB_OUTPUT_LM317
-//#define RGB_OUTPUT_MOSFET_KIRNO
-//#define RGB_OUTPUT_CAT
+//#define RGB_OUTPUT_LM317
+#define RGB_OUTPUT_MOSFET_KIRNO	//muestra CAT en display
+//#define RGB_OUTPUT_CAT			//muestra CAT en display
 #endif
 
 //-- End Of Defines For Configuration ---------------
